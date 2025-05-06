@@ -17,7 +17,7 @@ export default function Promociones() {
         autoplay={{ delay: 2000, disableOnInteraction: false }}
         className="w-full max-w-md mb-8"
       >
-        {[1, 2, 3, 4, 5, 6, 7].map((num) => (
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
           <SwiperSlide key={num}>
             <img
               src={`/images/promo${num}.jpg`}
