@@ -6,6 +6,7 @@ import Recordatorios from './pages/Recordatorios'
 import Pedido from './pages/Pedido'
 import BottomNav from './components/BottomNav'
 import Redireccion from './pages/Redireccion'
+import ComoLlegar from './pages/ComoLlegar'
 export default function App() {
   return (
     <div className="pb-16">
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/recordatorios" element={<Recordatorios />} />
         <Route path="/pedido" element={<Pedido />} />
         <Route path="/redireccion" element={<Redireccion />} />
+        <Route path="/comollegar" element={<ComoLlegar />} />
       </Routes>
       <BottomNav />
     </div>
