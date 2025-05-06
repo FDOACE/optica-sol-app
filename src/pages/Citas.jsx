@@ -19,7 +19,7 @@ export default function Citas() {
 - Hora deseada: ${hora}%0A
 - Teléfono de contacto: ${telefono}`
 
-    const whatsappURL = `https://wa.me/573102512390?text=${mensaje}`
+    const whatsappURL = `https://wa.me/573002194455?text=${mensaje}`
 
     // Abrir WhatsApp sin cerrar la app
     window.open(whatsappURL, '_blank')
