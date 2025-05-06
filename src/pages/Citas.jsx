@@ -61,30 +61,25 @@ export default function Citas() {
           <option value="PS">Pasaporte</option>
 
         </select>
-        <input
-          type="text"
-          placeholder="Número de documento"
-          value={numDoc}
-          onChange={(e) => setNumDoc(e.target.value)}
-          className="w-full border border-gray-300 p-2 rounded"
-          required
-        />
-        <input
-          type="tel"
-          placeholder="Número de contacto"
-          value={telefono}
-          onChange={(e) => setTelefono(e.target.value)}
-          className="w-full border border-gray-300 p-2 rounded"
-          required
-        />
-        <input
-          type="date"
-          value={fecha}
-          onChange={(e) => setFecha(e.target.value)}
-          className="w-full border border-gray-300 p-2 rounded"
-          min={new Date().toISOString().split("T")[0]}
-          required
-        />
+        
+        <div>
+  <label
+    htmlFor="fecha"
+    className="block text-sm font-medium text-gray-700 mb-1"
+  >
+    Fecha deseada
+  </label>
+  <input
+    id="fecha"
+    type="date"
+    value={fecha}
+    onChange={(e) => setFecha(e.target.value)}
+    className="w-full border border-gray-300 p-2 rounded"
+    min={new Date().toISOString().split("T")[0]}
+    required
+  />
+</div>
+       
         <select
           className="w-full border border-gray-300 p-2 rounded"
           value={hora}
