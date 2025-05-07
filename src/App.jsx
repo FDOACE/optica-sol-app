@@ -1,3 +1,4 @@
+import Info from './pages/Info'
 import { Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import Citas from './pages/Citas'
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="/pedido" element={<Pedido />} />
         <Route path="/redireccion" element={<Redireccion />} />
         <Route path="/comollegar" element={<ComoLlegar />} />
+        <Route path="/info" element={<Info />} />
       </Routes>
       <BottomNav />
     </div>

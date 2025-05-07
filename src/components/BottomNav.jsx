@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom'
-import { Home, Calendar, Gift, Bell, Package, MapPin } from 'lucide-react'
+import { Home, Calendar, Gift, Bell, Package, MapPin, Info } from 'lucide-react'
 
 export default function BottomNav() {
   const location = useLocation()
@@ -11,6 +11,7 @@ export default function BottomNav() {
     { path: '/recordatorios', label: 'Recordar', icon: <Bell size={24} /> },
     { path: '/pedido', label: 'Pedido', icon: <Package size={24} /> },
     { path: '/comollegar', label: 'Llegar', icon: <MapPin size={24} /> }, // nuevo botón
+    { path: '/info', label: 'Info', icon: <Info size={24} /> },
   ]
 
   return (
