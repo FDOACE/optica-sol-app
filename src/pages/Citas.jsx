@@ -33,6 +33,17 @@ export default function Citas() {
     setTelefono('')
   }
 
+  const handleFechaChange = (e) => {
+    const valor = e.target.value
+    const dia = new Date(valor).getDay()
+    if (dia !== 0 && dia !== 6) {
+      setFecha(valor)
+    } else {
+      alert('Selecciona un día entre semana (lunes a viernes).')
+      setFecha('')
+    }
+  }
+
   return (
     <div className="p-4 flex flex-col items-center">
       <img src={logo} alt="Óptica Sol Logo" className="w-40 mb-4" />
@@ -53,33 +64,47 @@ export default function Citas() {
           onChange={(e) => setTipoDoc(e.target.value)}
           required
         >
-         <option value="">Tipo de documento</option>
+          <option value="">Tipo de documento</option>
           <option value="CC">Cédula de ciudadanía</option>
           <option value="TI">Tarjeta de identidad</option>
           <option value="CE">Cédula de extranjería</option>
           <option value="RC">Registro Civil</option>
           <option value="PS">Pasaporte</option>
-
         </select>
-        
+        <input
+          type="text"
+          placeholder="Número de documento"
+          value={numDoc}
+          onChange={(e) => setNumDoc(e.target.value)}
+          className="w-full border border-gray-300 p-2 rounded"
+          required
+        />
+        <input
+          type="tel"
+          placeholder="Número de contacto"
+          value={telefono}
+          onChange={(e) => setTelefono(e.target.value)}
+          className="w-full border border-gray-300 p-2 rounded"
+          required
+        />
         <div>
-  <label
-    htmlFor="fecha"
-    className="block text-sm font-medium text-gray-700 mb-1"
-  >
-    Fecha deseada
-  </label>
-  <input
-    id="fecha"
-    type="date"
-    value={fecha}
-    onChange={(e) => setFecha(e.target.value)}
-    className="w-full border border-gray-300 p-2 rounded"
-    min={new Date().toISOString().split("T")[0]}
-    required
-  />
-</div>
-       
+          <label
+            htmlFor="fecha"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Fecha deseada
+          </label>
+          <input
+            id="fecha"
+            type="date"
+            value={fecha}
+            onChange={handleFechaChange}
+            className="w-full border border-gray-300 p-2 rounded"
+            min={new Date().toISOString().split("T")[0]}
+            required
+          />
+        </div>
+
         <select
           className="w-full border border-gray-300 p-2 rounded"
           value={hora}
