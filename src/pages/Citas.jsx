@@ -1,42 +1,40 @@
 import { useState } from 'react'
 import logo from '../assets/logo-optica.jpg'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
+import { registerLocale } from 'react-datepicker'
+import es from 'date-fns/locale/es'
+
+registerLocale('es', es)
 
 export default function Citas() {
   const [nombre, setNombre] = useState('')
   const [tipoDoc, setTipoDoc] = useState('')
   const [numDoc, setNumDoc] = useState('')
-  const [fecha, setFecha] = useState('')
+  const [fecha, setFecha] = useState(null)
   const [hora, setHora] = useState('')
   const [telefono, setTelefono] = useState('')
-
-  const esDiaHabil = (fechaStr) => {
-    const fechaObj = new Date(fechaStr)
-    const dia = fechaObj.getDay()
-    return dia >= 1 && dia <= 5 // Lunes a Viernes (0 = Domingo, 6 = Sábado)
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
-    if (!esDiaHabil(fecha)) {
-      alert('Por favor selecciona una fecha entre lunes y viernes.')
-      return
-    }
+    const fechaStr = fecha ? fecha.toLocaleDateString('es-CO') : ''
 
     const mensaje = `Hola, soy *${nombre}*. Deseo agendar una cita en Óptica Sol.%0A
 - Tipo de documento: ${tipoDoc}%0A
 - Número: ${numDoc}%0A
-- Fecha deseada: ${fecha}%0A
+- Fecha deseada: ${fechaStr}%0A
 - Hora deseada: ${hora}%0A
 - Teléfono de contacto: ${telefono}`
 
     const whatsappURL = `https://wa.me/573002194455?text=${mensaje}`
+
     window.open(whatsappURL, '_blank')
 
     setNombre('')
     setTipoDoc('')
     setNumDoc('')
-    setFecha('')
+    setFecha(null)
     setHora('')
     setTelefono('')
   }
@@ -91,14 +89,15 @@ export default function Citas() {
           <label htmlFor="fecha" className="block text-sm font-medium text-gray-700 mb-1">
             Fecha deseada
           </label>
-          <input
-            id="fecha"
-            type="date"
-            value={fecha}
-            onChange={(e) => setFecha(e.target.value)}
+          <DatePicker
+            selected={fecha}
+            onChange={(date) => setFecha(date)}
             className="w-full border border-gray-300 p-2 rounded"
-            min={new Date().toISOString().split("T")[0]}
-            required
+            minDate={new Date()}
+            filterDate={(date) => date.getDay() !== 0 && date.getDay() !== 6}
+            dateFormat="dd/MM/yyyy"
+            placeholderText="Selecciona una fecha"
+            locale="es"
           />
         </div>
 
@@ -124,3 +123,4 @@ export default function Citas() {
     </div>
   )
 }
+
