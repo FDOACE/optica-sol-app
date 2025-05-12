@@ -9,8 +9,19 @@ export default function Citas() {
   const [hora, setHora] = useState('')
   const [telefono, setTelefono] = useState('')
 
+  const esDiaHabil = (fechaStr) => {
+    const fechaObj = new Date(fechaStr)
+    const dia = fechaObj.getDay()
+    return dia >= 1 && dia <= 5 // Lunes a Viernes (0 = Domingo, 6 = Sábado)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault()
+
+    if (!esDiaHabil(fecha)) {
+      alert('Por favor selecciona una fecha entre lunes y viernes.')
+      return
+    }
 
     const mensaje = `Hola, soy *${nombre}*. Deseo agendar una cita en Óptica Sol.%0A
 - Tipo de documento: ${tipoDoc}%0A
@@ -20,28 +31,14 @@ export default function Citas() {
 - Teléfono de contacto: ${telefono}`
 
     const whatsappURL = `https://wa.me/573002194455?text=${mensaje}`
-
-    // Abrir WhatsApp sin cerrar la app
     window.open(whatsappURL, '_blank')
 
-    // Limpiar campos
     setNombre('')
     setTipoDoc('')
     setNumDoc('')
     setFecha('')
     setHora('')
     setTelefono('')
-  }
-
-  const handleFechaChange = (e) => {
-    const valor = e.target.value
-    const dia = new Date(valor).getDay()
-    if (dia !== 0 && dia !== 6) {
-      setFecha(valor)
-    } else {
-      alert('Selecciona un día entre semana (lunes a viernes).')
-      setFecha('')
-    }
   }
 
   return (
@@ -71,6 +68,7 @@ export default function Citas() {
           <option value="RC">Registro Civil</option>
           <option value="PS">Pasaporte</option>
         </select>
+
         <input
           type="text"
           placeholder="Número de documento"
@@ -79,6 +77,7 @@ export default function Citas() {
           className="w-full border border-gray-300 p-2 rounded"
           required
         />
+
         <input
           type="tel"
           placeholder="Número de contacto"
@@ -87,18 +86,16 @@ export default function Citas() {
           className="w-full border border-gray-300 p-2 rounded"
           required
         />
+
         <div>
-          <label
-            htmlFor="fecha"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
+          <label htmlFor="fecha" className="block text-sm font-medium text-gray-700 mb-1">
             Fecha deseada
           </label>
           <input
             id="fecha"
             type="date"
             value={fecha}
-            onChange={handleFechaChange}
+            onChange={(e) => setFecha(e.target.value)}
             className="w-full border border-gray-300 p-2 rounded"
             min={new Date().toISOString().split("T")[0]}
             required
@@ -116,6 +113,7 @@ export default function Citas() {
             <option key={h} value={h}>{h}</option>
           ))}
         </select>
+
         <button
           type="submit"
           className="w-full bg-red-600 text-white py-2 rounded hover:bg-red-700"
