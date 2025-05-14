@@ -1,15 +1,14 @@
-import 'swiper/css'
-
 export default function Promociones() {
   return (
     <div className="p-4 flex flex-col items-center">
-      <h1 className="text-2xl font-bold text-red-700 mb-6">Promociones del Mes</h1>
-
-      <div className="w-full max-w-md mb-8">
-        <img
-          src="/images/promo1.jpg"
-          alt="Promoción"
-          className="rounded w-full"
+      {/* Video de promoción en formato vertical */}
+      <div className="w-full max-w-md mb-8 aspect-[9/16]">
+        <iframe
+          src="https://www.youtube.com/embed/pwwxh0cu1hM"
+          title="Promoción Óptica Sol"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          className="w-full h-full rounded"
         />
       </div>
 
