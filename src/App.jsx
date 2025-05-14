@@ -8,6 +8,7 @@ import Pedido from './pages/Pedido'
 import BottomNav from './components/BottomNav'
 import Redireccion from './pages/Redireccion'
 import ComoLlegar from './pages/ComoLlegar'
+import Recordatorios from './pages/Recordatorios';
 export default function App() {
   return (
     <div className="pb-16">
@@ -21,6 +22,7 @@ export default function App() {
         <Route path="/comollegar" element={<ComoLlegar />} />
         <Route path="/info" element={<Info />} />
         <Route path="/pedido" element={<Pedido />} />
+        <Route path="/recordatorios" element={<Recordatorios />} />
       </Routes>
       <BottomNav />
     </div>
