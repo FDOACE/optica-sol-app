@@ -21,8 +21,7 @@ export default function App() {
         <Route path="/redireccion" element={<Redireccion />} />
         <Route path="/comollegar" element={<ComoLlegar />} />
         <Route path="/info" element={<Info />} />
-        <Route path="/pedido" element={<Pedido />} />
-        <Route path="/recordatorios" element={<Recordatorios />} />
+        <Route path="/pedido" element={<Pedido />} />    
       </Routes>
       <BottomNav />
     </div>
