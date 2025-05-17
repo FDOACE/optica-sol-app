@@ -31,7 +31,9 @@ export default function Recordatorios() {
       })
 
       const datosFiltrados = datos.filter(
-        (fila) => fila.tipo === tipo && fila.documento === numero
+        (fila) =>
+          fila.tipo?.trim().toUpperCase() === tipo.toUpperCase() &&
+          fila.documento?.trim() === numero.trim()
       )
 
       if (datosFiltrados.length === 0) {
