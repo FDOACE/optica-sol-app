@@ -40,7 +40,7 @@ export default function Recordatorios() {
       }
 
       const fechasOrdenadas = datosFiltrados
-        .map((f) => f.fechas) // <- CORREGIDO AQUÍ
+        .map((f) => f.fecha)
         .filter(Boolean)
         .sort((a, b) => new Date(b) - new Date(a))
         .slice(0, 3)
@@ -65,6 +65,8 @@ export default function Recordatorios() {
         <option value="CC">Cédula de ciudadanía</option>
         <option value="TI">Tarjeta de identidad</option>
         <option value="CE">Cédula de extranjería</option>
+        <option value="RC">Registro Civil</option>
+        <option value="PS">Pasaporte</option>
       </select>
 
       <input
