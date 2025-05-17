@@ -42,7 +42,7 @@ export default function Recordatorios() {
       }
 
       const fechasOrdenadas = datosFiltrados
-        .map((f) => f.fecha)
+        .map((f) => f.fechas) // CORREGIDO AQUÍ
         .filter(Boolean)
         .sort((a, b) => new Date(b) - new Date(a))
         .slice(0, 3)
